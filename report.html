@@ -11924,9 +11924,9 @@ Standard deviation of prices: $165,171.13
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-Increase in RM would lead to increase in housing price
-Increase in LSTAT would lead to decrease in housing price
-Increase in PTSTAT would lead to a decrease in housing price</p>
+Increase in RM would lead to increase in housing price due to likely increase in square footage of the house
+Increase in LSTAT would lead to decrease in housing price due to perception of not being a "nice" neighborhood
+Increase in PTSTAT would lead to a decrease in housing price due to potential low API scores of the school district.</p>
 
 </div>
 </div>
@@ -12132,7 +12132,7 @@ The model has an accuracy of 92.3% - it does capture the variation of the target
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-By splitting the data into training and test sets, we are able to validate the model on "fresh" data. If we use training data to test, then the model will always be accurate and we will not really know model performance for new data.</p>
+By splitting the data into training and test sets, we are able to validate the model on "fresh" data. So, we have an independent dataset to valdiate the model. This also avoids the problem of overfitting, where the model is too well fit for the training set but is not able to generalize well enough for new data.</p>
 
 </div>
 </div>
@@ -13253,7 +13253,8 @@ SUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-MAx_depth = 3. The training and test curves start to converge around 300 training points. Adding any additional training points beyond this will not benefit the model.</p>
+MAx_depth = 3. As the # of training data points is increased from 0, the score of the test data increases. However, the score of the training data reduces. As more training data is added, the uncertainty of the test score also reduces.
+The training and test curves start to converge around 300 training points. The uncertainty in the test score is alsovery low.  Adding any additional training points beyond this will not benefit the model.</p>
 
 </div>
 </div>
@@ -13771,8 +13772,7 @@ H2MxcNoLCiKCAAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong>
-For a depth of 1, the model suffers from high variance - this is seen from the width of the shaded region on the curves. The bias is small since the scores of the testing and training sets are pretty close.
-For a depth of 10, the model suffers from high bias - this seen from the narrowing of the shaded region and the increase in the distance between the two curves. That is, the score of the training curve is close to 1, whereas the score of the testing data is 0.7.</p>
+For a depth of 1, the model suffers from high bias (too few features) as there is a high uncertainty in the training score. As we add more features, the bias reduces and the uncertainty in training score also reduces. When it is trained to a max_depth of 10, the model suffers from high variance. This can be seen from the low uncertainty in training score that has converged to 1, but the high uncertainty in the much lower test score. The model is overfit to the training data</p>
 
 </div>
 </div>
